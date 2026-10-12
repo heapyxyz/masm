@@ -7,7 +7,6 @@ with pkgs;
 mkShell {
   buildInputs = [
     gnumake
-    jwasm
     lld
     wineWow64Packages.stable
   ];

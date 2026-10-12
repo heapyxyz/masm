@@ -15,15 +15,15 @@ x86: $(TARGETS_X86)
 
 x64/%:
 	@mkdir -p build/x64
-	jwasm -win64 -Zg -Zne -Zv8 -Cp -Fo build/x64/$*.obj src/x64/$*/main.asm
-	lld-link /nologo /machine:x64 /subsystem:console /entry:main \
-		/out:build/x64/$*.exe build/x64/$*.obj $(LIBS_X64)
+	$(WINE) tools/ml64.exe /nologo /c /Cp /Zi /Zf /Fo build/x64/$*.obj src/x64/$*/main.asm
+	lld-link /nologo /machine:x64 /subsystem:console /entry:main /debug \
+		/ignore:4099 /pdb:build/x64/$*.pdb /out:build/x64/$*.exe build/x64/$*.obj $(LIBS_X64)
 
 x86/%:
 	@mkdir -p build/x86
-	jwasm -coff -Zg -Zne -Zv8 -Cp -Fo build/x86/$*.obj src/x86/$*/main.asm
-	lld-link /nologo /machine:x86 /safeseh:no /subsystem:console /entry:main \
-		/out:build/x86/$*.exe build/x86/$*.obj $(LIBS_X86)
+	$(WINE) tools/ml.exe /nologo /c /coff /Cp /Zi /Zf /Fo build/x86/$*.obj src/x86/$*/main.asm
+	lld-link /nologo /machine:x86 /safeseh:no /subsystem:console /entry:main /debug \
+		/ignore:4099 /pdb:build/x86/$*.pdb /out:build/x86/$*.exe build/x86/$*.obj $(LIBS_X86)
 
 run-x64/%: x64/%
 	@echo

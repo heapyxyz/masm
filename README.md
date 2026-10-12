@@ -6,14 +6,9 @@ My MASM projects made for uni with an easy-to-use and awesome Makefile.
 
 At my university we're learning MASM and there's no easy way to get Visual Studio working on Linux/macOS - VMs are laggy, WinBoat is in beta (lots of visual bugs, heavy apps are unusable) and obviously I won't install Windows just for that. This repository makes it easy to compile and run x86/x64 MASM projects in Visual Studio Code, NeoVim or any other Linux/macOS dev environment.
 
-## How?
-
-Makefile uses JWasm with optimized flags to compile (most compatible with Windows API) executables. Then, libraries from `libraries/[ARCHITECTURE]/` folder are linked (using `lld-link` command) so your project runs without any Windows API issues.
-
 ## Requirements
 
 - [Wine](https://winehq.org)
-- [JWasm](https://github.com/Baron-von-Riedesel/JWasm) (most likely you'll have to build it yourself)
 - `make`
 - `lld`
 
