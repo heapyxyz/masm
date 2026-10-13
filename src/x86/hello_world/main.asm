@@ -1,9 +1,9 @@
 .686
-.model flat
+.model flat, stdcall
 
-extern _ExitProcess@4 : PROC
-extern _GetStdHandle@4 : PROC
-extern _WriteConsoleA@20 : PROC
+extern ExitProcess@4 : PROC
+extern GetStdHandle@4 : PROC
+extern WriteConsoleA@20 : PROC
 
 ; HANDLE WINAPI GetStdHandle(
 ;       DWORD nStdHandle);
@@ -24,19 +24,19 @@ extern _WriteConsoleA@20 : PROC
          db 'This is a 32-bit MASM assembly running on Wine.', 10, 0
 
 .code
-_main PROC
+main PROC
     push DWORD PTR output_handle
-    call _GetStdHandle@4
+    call GetStdHandle@4
 
     push 0
     push 0 
     push 62 ; length of text (62 characters)
     push OFFSET text
     push eax ; push return value of GetStdHandle() as hConsoleOutput
-    call _WriteConsoleA@20
+    call WriteConsoleA@20
     ; ? stack cleanup isnt needed (add esp, X) for Win32 calls, only C calls need it
 
     push 0 ; 0 exit code
-    call _ExitProcess@4
-_main ENDP
+    call ExitProcess@4
+main ENDP
 END
