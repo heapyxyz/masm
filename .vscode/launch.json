@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug x86 (Wine)",
+      "type": "lldb",
+      "request": "attach",
+      "preLaunchTask": "winedbg x86",
+      "sourceMap": { "Z:\\": "/" },
+      "targetCreateCommands": [
+        "target create ${workspaceFolder}/build/x86/${fileDirnameBasename}.exe"
+      ],
+      "processCreateCommands": ["gdb-remote localhost:12345"]
+    },
+    {
+      "name": "Debug x64 (Wine)",
+      "type": "lldb",
+      "request": "attach",
+      "preLaunchTask": "winedbg x64",
+      "sourceMap": { "Z:\\": "/" },
+      "targetCreateCommands": [
+        "target create ${workspaceFolder}/build/x64/${fileDirnameBasename}.exe"
+      ],
+      "processCreateCommands": ["gdb-remote localhost:12345"]
+    }
+  ]
+}

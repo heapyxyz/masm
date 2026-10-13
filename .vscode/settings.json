@@ -1,0 +1,4 @@
+{
+  // allow breakpoints in .asm files
+  "debug.allowBreakpointsEverywhere": true
+}

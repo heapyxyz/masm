@@ -8,6 +8,7 @@ mkShell {
   buildInputs = [
     gnumake
     lld
+    clang
     wineWow64Packages.stable
   ];
 

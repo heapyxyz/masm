@@ -11,6 +11,7 @@ At my university we're learning MASM and there's no easy way to get Visual Studi
 - [Wine](https://winehq.org)
 - `make`
 - `lld`
+- `clang`
 
 ## Setting Up
 
@@ -60,8 +61,17 @@ make clean
 
 ### Debugging
 
-> [!IMPORTANT]  
-> Debugging MASM executables isn't currently supported, however I plan on adding it soon.
+Debugging is done via `winedbg`. This repository currently contains a ready-to-use VS Code configuration which debugs the project you're currently viewing. If it doesn't have a `main.asm` file, the debugger will fail.
+
+If you want to debug through VS Code, make sure you have [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) extension installed.
+
+To debug your project manually, use:
+
+```bash
+make debug-[ARCHITECTURE]/[PROJECT_NAME]
+```
+
+Then connect to the `gdb` session hosted @ `localhost:12345`.
 
 ## Licensing
 

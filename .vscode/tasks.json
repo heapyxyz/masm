@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "winedbg x86",
+      "type": "shell",
+      "command": "make",
+      "args": ["debug-x86/${fileDirnameBasename}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "winedbg",
+        "pattern": [
+          {
+            "regexp": "^###winedbg###(.*)$",
+            "kind": "file",
+            "file": 1,
+            "message": 1
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "WineDbg starting",
+          "endsPattern": "target remote localhost:"
+        }
+      },
+      "presentation": { "panel": "dedicated" }
+    },
+    {
+      "label": "winedbg x64",
+      "type": "shell",
+      "command": "make",
+      "args": ["debug-x64/${fileDirnameBasename}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "winedbg",
+        "pattern": [
+          {
+            "regexp": "^###winedbg###(.*)$",
+            "kind": "file",
+            "file": 1,
+            "message": 1
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "WineDbg starting",
+          "endsPattern": "target remote localhost:"
+        }
+      },
+      "presentation": { "panel": "dedicated" }
+    }
+  ]
+}
