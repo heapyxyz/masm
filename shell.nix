@@ -13,6 +13,8 @@ mkShell {
   ];
 
   shellHook = ''
+    export LANG="pl_PL.UTF-8"
+    export LC_ALL="pl_PL.UTF-8"
     unset TEMP TMP TEMPDIR TMPDIR
   '';
 }
