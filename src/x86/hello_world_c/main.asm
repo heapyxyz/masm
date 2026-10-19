@@ -14,7 +14,7 @@ extern _write : PROC
 
 .code
 main PROC
-    push 7 ; length of text (6 characters)
+    push 7 ; length of text (7 characters)
     push OFFSET text ; buffer
     push 1 ; fd, 1 = stdout
     call _write
