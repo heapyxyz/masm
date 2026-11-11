@@ -13,7 +13,7 @@ At my university we're learning MASM and there's no easy way to get Visual Studi
 - `lld`
 - `clang`
 
-## Setting Up
+## Getting started
 
 ### Initialization
 
